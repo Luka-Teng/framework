@@ -1,0 +1,8 @@
+{
+  "name": "template",
+  "title": "template",
+  "author": "Luka",
+  "entry": "main.js",
+  "template": "index.jade",
+  "filename": "template/index.html"
+}
