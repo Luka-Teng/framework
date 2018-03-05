@@ -2,7 +2,7 @@
   "name": "template",
   "title": "template",
   "author": "Luka",
-  "entry": "main.js",
+  "entry": "main.ts",
   "template": "index.jade",
   "filename": "template/index.html"
 }
