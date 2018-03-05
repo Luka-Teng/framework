@@ -4,15 +4,19 @@ process.env.NODE_ENV = 'testing'
 const webpack = require('webpack')
 const DevServer = require('webpack-dev-server')
 
-const webpackConfig = require('../../build/webpack.prod.conf')
+// 不是很理解为什么加入production配置， 注释后即可正常
+// const webpackConfig = require('../../build/webpack.prod.conf')
 const devConfigPromise = require('../../build/webpack.dev.conf')
 
 let server
 
 devConfigPromise.then(devConfig => {
   const devServerOptions = devConfig.devServer
-  const compiler = webpack(webpackConfig)
-  server = new DevServer(compiler, devServerOptions)
+  //删除了production的配置，只运行dev下的webpack
+  //const compiler = webpack(webpackConfig)
+  //server = new DevServer(compiler, devServerOptions)
+  const compiler = webpack(devConfig)
+  server = new DevServer(compiler)
   const port = devServerOptions.port
   const host = devServerOptions.host
   return server.listen(port, host)

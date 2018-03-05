@@ -9,7 +9,7 @@ const config = {
   base: {
     entry: {}, // 项目入口配置，对应 webpack 中的 entry.
     htmlWebpackPluginConfig: {} // 对应 webpack 中的 htmlWebpackPlugin 配置
-  }, 
+  },
   dev: {
 
     // Paths
@@ -108,7 +108,7 @@ modules.forEach(moduleName => {
   let module = require(`${modulePath}/module.json`)
 	//定义入口
   config.base.entry[module.name] = `${modulePath}/${module.entry}`
-	//配置各个入口的htmlwebpackplugin配置 
+	//配置各个入口的htmlwebpackplugin配置
   config.base.htmlWebpackPluginConfig[module.name] = {
     title: module.title,
     filename: module.filename,
@@ -119,7 +119,8 @@ modules.forEach(moduleName => {
 })
 
 //如果没有符合规范的模块项目， 抛出异常
-if (JSON.stringify(config.base.entry) == "{}") {
+const keys = require('babel-runtime/core-js/object/keys').default
+if (!keys(config.base.entry)) {
   throw new Error('no modules', 500)
 }
 
