@@ -81,7 +81,7 @@ const config = {
 }
 
 // 黑名单中的模块不会被获取, 一般为公用组件库
-let blacklist = ['common']
+let blacklist = ['common', 'template']
 let srcPath = path.resolve(__dirname, '../src')
 let modules = fs.readdirSync(srcPath)
 
